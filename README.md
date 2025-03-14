@@ -1,18 +1,18 @@
 # Minimal next.js project setup using React Server Components, Prisma, PostgreSql, Playwright, Vitest, Helm, k8s and Github Actions
 
-Wanted to checkout how to setup everything and maybe it is useful for someone... This is a minimal app that lets you send messages and saves them in a database.
+Wanted to checkout how to syetup next.js with all bells and whistles - maybe it is useful for someone...
 
 ## Local dev
 
 Run `docker compose up` to start PostgreSql.
 
-Put something like 
+Put something like
 
-`DATABASE_URL="postgresql://postgres:password@127.0.0.1:5432/postgres?schema=public"` 
+`DATABASE_URL="postgresql://postgres:password@127.0.0.1:5432/postgres?schema=public"`
 
-in you `.env` and create `.env.test` next to it with 
+in your `.env` and create `.env.test` next to it with
 
-`export DATABASE_URL="postgresql://postgres:password@127.0.0.1:5432/postgres_test?schema=public"` 
+`export DATABASE_URL="postgresql://postgres:password@127.0.0.1:5432/postgres_test?schema=public"`
 
 to use a different db during testing.
 
@@ -40,7 +40,11 @@ This will also reset the database and run the tests.
 
 ## K8s
 
-To build the container and use it locally using minikube you need to run 
+Start minikube
+
+`minikube start`
+
+To build the container and use it locally using minikube you need to run
 
 `eval $(minikube docker-env)`
 
@@ -53,6 +57,18 @@ Then you should be able to install the helm chart
 `helm install helmkube ./helm`
 
 This will run an init container to migrate the prisma schema before starting the new app container.
+
+To access the app you need to create a mikube tunnel
+
+`minikube tunnel`
+
+You can check the status on the dashboard
+
+`minikube dashboard`
+
+If you do changes in the database schema or the app, rebuild the frontend container with a new version, increase the `appVersion` in `Chart.yaml` and run
+
+`helm upgrade helmkube ./helm`
 
 ## CI
 
