@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "test_server": "next dev --turbopack -p 3001",
     "test": "./scripts/run-integration.sh && vitest",
+    "testci": "vitest",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
