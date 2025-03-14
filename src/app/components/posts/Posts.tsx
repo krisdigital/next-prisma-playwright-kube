@@ -11,15 +11,15 @@ type PostsType = {
 };
 
 const Posts: React.FC<PostsType> = ({ initialPosts, onSubmit }) => {
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const PostRow: React.FC<{ p: Post }> = ({ p }) => (
     <div className="mb-2">
-    <div className="px-2 py-0.5 border-1 border-blue-400 rounded-sm bg-blue-100">
-      <h2 className="font-extrabold text-lg">{p.title}</h2>
-      <p>{p.content}</p>
-    </div>
-    <p className="text-sm text-right">{p.createdAt.toLocaleString()}</p>
+      <div className="px-2 py-0.5 border-1 border-blue-400 rounded-sm bg-blue-100">
+        <h2 className="font-extrabold text-lg">{p.title}</h2>
+        <p>{p.content}</p>
+      </div>
+      <p className="text-sm text-right">{p.createdAt.toLocaleString()}</p>
     </div>
   );
 

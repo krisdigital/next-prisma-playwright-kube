@@ -15,14 +15,14 @@ export default async function Home() {
     "use server";
     let user = await prisma.user.findFirst();
     if (!user) {
-      user = await prisma.user.create({data: {email: 'klaus@klaus.de', name: 'Klaus'}});
+      user = await prisma.user.create({ data: { email: 'klaus@klaus.de', name: 'Klaus' } });
     }
     await prisma.post.create({ data: { title, content, authorId: user.id, notes } });
     revalidatePath("/");
   }
 
   const posts = await getPosts();
-  
+
   return (
     <div className="container">
       <Posts onSubmit={createPost} initialPosts={posts} />
