@@ -31,7 +31,7 @@ jobs:
     - name: Push schema to database
       run: npx prisma db push && npx prisma generate
     - name: Run Application
-      run: npm run vitest & sleep 10
+      run: npm run testci & sleep 10
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
