@@ -1,7 +1,7 @@
 import React from "react";
-import prisma from "./client";
-import Posts from "./components/posts/Posts";
-import { PostFormType } from "./components/posts/types";
+import prisma from "../lib/client";
+import Posts from "../components/posts/Posts";
+import { PostFormType } from "../components/posts/types";
 import { revalidatePath } from "next/cache";
 
 export const dynamic = 'force-dynamic';

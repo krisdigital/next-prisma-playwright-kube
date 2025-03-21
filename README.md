@@ -12,7 +12,7 @@ Put something like
 
 in your `.env` and create `.env.test` next to it with
 
-`export DATABASE_URL="postgresql://postgres:password@127.0.0.1:5432/postgres_test?schema=public"`
+`DATABASE_URL="postgresql://postgres:password@127.0.0.1:5432/postgres_test?schema=public"`
 
 to use a different db during testing.
 
@@ -58,7 +58,7 @@ Then you should be able to install the helm chart
 
 This will run an init container to migrate the prisma schema before starting the new app container.
 
-To access the app you need to create a mikube tunnel
+To access the app you need to create a minikube tunnel
 
 `minikube tunnel`
 
